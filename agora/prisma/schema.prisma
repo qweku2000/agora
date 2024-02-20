@@ -1,0 +1,21 @@
+// prisma/schema.prisma
+
+// Define your model
+model Store {
+  id        String   @id @default(uuid())
+  name      String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Define your generator block
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define your datasource block
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
